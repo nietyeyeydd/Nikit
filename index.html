@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Надежда, я тебя люблю!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: linear-gradient(160deg, #2b1055, #7597de);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  header {
+    text-align: center;
+    padding: 90px 20px 60px;
+    background: linear-gradient(180deg, rgba(0,0,0,.25), transparent);
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    background: linear-gradient(90deg, #ffdde1, #ee9ca7, #ffdde1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 16px;
+  }
+  .subtitle { font-size: 1.3rem; opacity: .9; }
+  section {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,.08);
+    border-radius: 18px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.25);
+  }
+  h2 { color: #ffdde1; margin-bottom: 14px; font-size: 1.7rem; }
+  p  { line-height: 1.7; font-size: 1.1rem; }
+  .letter { font-style: italic; white-space: pre-line; }
+  /* --- галерея --- */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .photo {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: rgba(255,255,255,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    font-size: .95rem;
+    opacity: .85;
+  }
+  .photo img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  /* --- сердечки --- */
+  .heart {
+    position: fixed;
+    bottom: -40px;
+    font-size: 24px;
+    animation: rise linear infinite;
+    pointer-events: none;
+    z-index: 5;
+  }
+  @keyframes rise {
+    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+  /* --- QR --- */
+  .qr-box { text-align: center; }
+  .qr-box img {
+    margin: 18px auto 0;
+    border-radius: 12px;
+    background: #fff;
+    padding: 10px;
+    max-width: 240px;
+    width: 60%;
+  }
+  .qr-hint {
+    margin-top: 14px;
+    font-size: .95rem;
+    opacity: .85;
+    background: rgba(0,0,0,.2);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+    font-size: 1.2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>С днём рождения, Надежда! 💐</h1>
+  <p class="subtitle">Горбунова Надежда — самая любимая девушка на свете</p>
+</header>
+
+<section>
+  <h2>Письмо для тебя</h2>
+  <p class="letter">Моя дорогая Надежда!
+
+Поздравляю тебя с днём рождения! Ты — самое яркое, что случилось в моей жизни. Каждый день рядом с тобой — подарок, и сегодня весь мир (ну, хотя бы этот сайт) говорит только одно: я ужасно сильно тебя люблю!
+
+Пусть этот год принесёт тебе столько счастья, сколько ты приносишь мне. Ты прекрасна, умна, добра — и я до сих пор не понимаю, как мне так повезло.
+
+С днём рождения, родная! ❤️</p>
+</section>
+
+<section>
+  <h2>Наши фотографии</h2>
+  <div class="gallery">
+    <div class="photo">Положи фото в папку photos<br>с именем foto1.jpg
+      <img src="photos/foto1.jpg" alt="Наше фото 1" onerror="this.remove()">
+    </div>
+    <div class="photo">Положи фото в папку photos<br>с именем foto2.jpg
+      <img src="photos/foto2.jpg" alt="Наше фото 2" onerror="this.remove()">
+    </div>
+    <div class="photo">Положи фото в папку photos<br>с именем foto3.jpg
+      <img src="photos/foto3.jpg" alt="Наше фото 3" onerror="this.remove()">
+    </div>
+    <div class="photo">Положи фото в папку photos<br>с именем foto4.jpg
+      <img src="photos/foto4.jpg" alt="Наше фото 4" onerror="this.remove()">
+    </div>
+  </div>
+</section>
+
+<section class="qr-box">
+  <h2>QR-код с сайтом</h2>
+  <div id="qr-place"></div>
+  <div class="qr-hint">
+    QR-код появится автоматически, когда у сайта будет настоящий адрес.
+    Для этого: 1) зарегистрируйся на <b>github.com</b> и создай репозиторий;
+    2) загрузи туда файл <b>index.html</b> и папку <b>photos</b>;
+    3) в настройках репозитория включи <b>Settings → Pages → Deploy from branch → main</b>;
+    4) через пару минут сайт будет доступен по адресу вида
+    <b>https://твой-логин.github.io/имя-репозитория/</b>;
+    5) впиши этот адрес в переменную <b>SITE_URL</b> в начале файла — и обнови страницу.
+  </div>
+</section>
+
+<footer>Я люблю тебя, Надежда! Ты — моё самое большое счастье 💞</footer>
+
+<script>
+  // ★ Впиши сюда ссылку на опубликованный сайт, например:
+  // const SITE_URL = "https://ivangorbunov.github.io/nadezhda/";
+  const SITE_URL = "";
+
+  // Сердечки, летящие по экрану
+  setInterval(() => {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = ['❤️','💖','💞','💕'][Math.floor(Math.random()*4)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.animationDuration = (6 + Math.random() * 6) + 's';
+    h.style.fontSize = (16 + Math.random() * 22) + 'px';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 12000);
+  }, 900);
+
+  // QR-код
+  if (SITE_URL && SITE_URL.includes("http")) {
+    const img = document.createElement('img');
+    img.src = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+              encodeURIComponent(SITE_URL);
+    img.alt = "QR-код на сайт";
+    document.getElementById('qr-place').appendChild(img);
+  } else {
+    document.getElementById('qr-place').textContent =
+      "Здесь появится QR-код после публикации сайта.";
+  }
+</script>
+
+</body>
+</html>
